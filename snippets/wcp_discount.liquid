@@ -28,7 +28,9 @@
 {% assign active_discounts = active_discounts | downcase %}
 {%- assign active_discounts_tag_array = blank -%}
 
+{%- comment -%}
 {% if shop.metafields.wcp_status.wcp_status != 'disabled' and customer %}
+{%- endcomment -%}
   {% assign p_discount_value = 0 %}
   {% for discount_key in active_discounts_array %}
     {% assign key_split = discount_key | split: '-' %}
@@ -71,14 +73,18 @@
           {% endif %}
         {% endif %}
       {% endif %}
+{%- comment -%}
 {% endif %}
+{%- endcomment -%}
 {% endfor %}
 {% assign active_discounts_tag_array = active_discounts_tag_array | split:',' %}
 {% assign p_discount_tag = p_discount_tag | downcase %}
+{%- comment -%}
 {% if customer_tags contains p_discount_tag %}
     {% assign wcp_customer_tag = p_discount_tag %}
     {% assign wcp_discount_value = p_discount_value | divided_by: 100.0 %}
   {% endif %}
+{%- endcomment -%}
 {% assign wcp_discount_value = 1 | minus: wcp_discount_value %}
 {% assign wcp_price_min = wcp_discount.price_max %}
 {% assign raw_set_prices = wcp_discount.metafields.wcp_set_prices.wcp_set_prices %}
@@ -327,10 +333,13 @@
     {% endfor %}
   {% endif %}
   window.wcp_discount_value = {{wcp_discount_value}};
+  {%- comment -%}
   window.wcp_customer_tag = "{{wcp_customer_tag}}";
+  {%- endcomment -%}
 </script>
 {% endif %}
   {% assign p_discount_tag = p_key_before_small_case %}
+{%- comment -%}
 {% else %}
 {% assign wcp_compare_at_price = wcp_discount.compare_at_price %}
 {% assign wcp_compare_at_price_min = wcp_discount.compare_at_price_min %}
@@ -344,3 +353,4 @@
     {{- PriceVariables -}} 
 {% endif %}
 {% endif %}
+{%- endcomment -%}

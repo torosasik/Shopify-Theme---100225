@@ -1,4 +1,3 @@
-{% if shop.metafields.wcp_status.wcp_status != 'disabled' and customer %}
 {% assign v_active_discounts = shop.metafields.wcp_active_discounts.wcp_active_discounts %}
 {% assign v_active_discounts_array = v_active_discounts | split: ',' %}
 {%  assign active_discount_keys = null %}
@@ -81,11 +80,3 @@
     {%- assign PriceVariables = wcp_v_price | append:"|" | append:wcp_v_compare_at_price  -%}
     {{- PriceVariables -}}
   {% endif %}
-{% else %}
-  {% assign wcp_v_compare_at_price = wcp_variant.compare_at_price %}
-  {% assign wcp_v_price = wcp_variant.price %}
-  {% if wpd_is_render == 'yes' %}
-    {%- assign PriceVariables = wcp_v_price | append:"|" | append:wcp_v_compare_at_price  -%}
-    {{- PriceVariables -}}
-  {% endif %}
-{% endif %}

@@ -25,6 +25,7 @@
 {%- assign active_discounts = active_discounts | downcase -%}
 {%- assign active_discounts_tag_array = blank -%}
 
+{%- comment -%}
 {%- if shop.metafields.wcp_status.wcp_status != 'disabled' and customer -%}
   {%- assign p_discount_value = 0 -%}
   {%- for discount_key in active_discounts_array -%}
@@ -73,6 +74,8 @@
     {%- assign wcp_discount_value = p_discount_value | divided_by: 100.0 -%}
   {%- endif -%}
 
+{%- endcomment -%}
+
 {%- assign wcp_discount_value = 1 | minus: wcp_discount_value -%}
 {%- assign raw_set_prices = wcp_product_json.metafields.wcp_set_prices.wcp_set_prices -%}
 
@@ -95,8 +98,10 @@
 
         {%- assign sp_tag = sp_tag | downcase -%}
         {%- assign sp_var_arr = sp_arr | last | split: '^' -%}
+        {%- comment -%}
         {%- if active_discounts_tag_array contains sp_tag -%}
           {%- if customer_tags contains sp_tag -%}  
+        {%- endcomment -%}
             {%- for value in sp_var_arr -%}
               {%- assign val_split = value | split: '-' -%}
               {%- assign variant_id = val_split | first | times: 1 -%}
@@ -108,8 +113,10 @@
                 {%- endif -%}
               {%- endif -%}
             {%- endfor -%}
+        {%- comment -%}
           {%- endif -%}
         {%- endif -%}
+        {%- endcomment -%}
       {%- endfor -%}
     {%- endif -%}
     {%- if v_discount_tag and temp_set_price != 99999999999999999999999999999 -%}
@@ -142,6 +149,7 @@
 {%- if wcp_v_price > variant.price  -%}
   {%- assign wcp_v_price = variant.price -%}
 {%- endif -%}
+{%- comment -%}
 {%- if v_discount_tag -%}
       {%- for sp in set_prices_array -%}
         {%- assign sp_arr = sp | split: '--' -%}
@@ -170,7 +178,8 @@
           {%- endfor -%}
         {%- endif -%}
       {%- endfor -%}
-    {%- endif -%}
+{%- endif -%}
+{%- endcomment -%}
     {%- if wcp_discount_value == 1 and set_v_price == null -%}
       {%- assign wcp_v_compare_at_price = variant.compare_at_price -%}     
       {%- assign wcp_v_price = variant.price -%}

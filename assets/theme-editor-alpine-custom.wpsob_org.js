@@ -679,7 +679,6 @@ document.addEventListener('alpine:init', () => {
       
       if (!this.currentVariant) {
         this._dispatchUpdateVariant();
-        this._setUnavailable();
         return;
       }
       
@@ -982,11 +981,11 @@ document.addEventListener('alpine:init', () => {
       }
     },
     _setUnavailable() {
-      const price = document.getElementById(`price-` + sectionId);
-      if (price) price.classList.add('hidden');
-
-      const priceDesktop = document.getElementById(`price-sticky-${sectionId}`);
-      if (priceDesktop) priceDesktop.classList.add('hidden');
+      // const price = document.getElementById(`price-` + sectionId);
+      // if (price) price.classList.add('hidden');
+  
+      // const priceDesktop = document.getElementById(`price-sticky-${sectionId}`);
+      // if (priceDesktop) priceDesktop.classList.add('hidden');
       
       const inventory = document.getElementById(`block-inventory-` + sectionId);
       if (inventory) inventory.classList.add('hidden');

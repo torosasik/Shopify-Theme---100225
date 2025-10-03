@@ -59,6 +59,7 @@ if (!window.Eurus.loadedScript.includes('variant-select.js')) {
           if (firstAvailableVariantId != this.currentVariant.id) {
             this.paramVariant = true;
           }
+          // this._setUnavailable(); // Removed to always show prices
           if (isProductPage && this.paramVariant) {
             window.history.replaceState({}, '', `?variant=${this.currentVariant.id}`);
           }
@@ -371,11 +372,11 @@ if (!window.Eurus.loadedScript.includes('variant-select.js')) {
           }
         },
         _setUnavailable() {
-          const price = document.getElementById(`price-` + sectionId);
-          if (price) price.classList.add('hidden');
-
-          const priceDesktop = document.getElementById(`price-sticky-${sectionId}`);
-          if (priceDesktop) priceDesktop.classList.add('hidden');
+          // const price = document.getElementById(`price-` + sectionId);
+          // if (price) price.classList.add('hidden');
+  
+          // const priceDesktop = document.getElementById(`price-sticky-${sectionId}`);
+          // if (priceDesktop) priceDesktop.classList.add('hidden');
           
           const inventory = document.getElementById(`block-inventory-` + sectionId);
           if (inventory) inventory.classList.add('hidden');

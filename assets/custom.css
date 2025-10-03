@@ -18,7 +18,7 @@
 
 /* Target the WRAPPER inside the specific uninitialized container */
 .slider-slider-template--16199661584459__ss_slider_2_FiNagK:not(.swiper-initialized) .swiper-wrapper {
-  visibility: hidden; /* Hide wrapper initially */
+  /* visibility: hidden; */ /* Hide wrapper initially */
 }
 
 /* Make WRAPPER visible when the specific slider IS initialized */
@@ -75,7 +75,7 @@
 
 /* Target the WRAPPER inside the specific uninitialized container */
 .slider-slider-template--16181475442763__ss_slider_2_FiNagK:not(.swiper-initialized) .swiper-wrapper {
-  visibility: hidden; /* Hide wrapper initially */
+  /* visibility: hidden; */ /* Hide wrapper initially */
 }
 
 /* Make WRAPPER visible when the specific slider IS initialized */
