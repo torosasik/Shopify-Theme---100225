@@ -21,8 +21,13 @@
     assign target = product
   endif
 
-  assign compare_at_price = target.compare_at_price
-  assign price = target.price | default: 1999
+  if target == product
+    assign compare_at_price = product.compare_at_price_max
+    assign price = product.price | default: 1999
+  else
+    assign compare_at_price = target.compare_at_price
+    assign price = target.price | default: 1999
+  endif
   assign price_min = product.price_min
   assign price_max = product.price_max
   assign available = target.available | default: false

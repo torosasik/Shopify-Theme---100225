@@ -5,8 +5,13 @@
     assign target = product
   endif
 
-  assign compare_at_price = target.compare_at_price
-  assign price = target.price | default: 1999
+  if target == product
+    assign compare_at_price = product.compare_at_price_max
+    assign price = product.price | default: 1999
+  else
+    assign compare_at_price = target.compare_at_price
+    assign price = target.price | default: 1999
+  endif
   if settings.currency_code_enable
     assign money_price = price | money_with_currency
   else
