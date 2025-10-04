@@ -27,7 +27,7 @@
         "price": {
           "type": "price",
           "settings": {
-            "show_tax_and_shipping": false
+            "show_tax_and_shipping": true
           }
         },
         "groupmate_pdp_variant_selector_9XMHXN": {
@@ -198,6 +198,7 @@
         },
         "html_dGFfKn": {
           "type": "html",
+          "disabled": true,
           "settings": {
             "custom_html": "<div class=\"sharethis-inline-share-buttons\"></div>"
           }
