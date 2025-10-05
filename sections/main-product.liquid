@@ -66,8 +66,7 @@
 
 {{ 'product.css' | asset_url | stylesheet_tag }}
 
-{% comment %}Add elysium-visibility-control snippet{% endcomment %}
-{% render 'elysium-visibility-control' %}
+
 
 {% assign collection = collections[section.settings.collection] %}
 {% assign products_to_fetch = section.settings.products_to_show %}

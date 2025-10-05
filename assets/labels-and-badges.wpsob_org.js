@@ -70,16 +70,13 @@ requestAnimationFrame(() => {
       },
       doLoad(el, callback = () => {}) {
         this.initAllLabels(el);
-
-        if (Shopify.designMode) {
-          let productData = xParseJSON(el.getAttribute('x-labels-data'));
-          document.addEventListener('shopify:section:load', () => {
-            if (productData && !productData.isXBadgesPreview) {
-              this.initAllLabels(el);
-            }
-          });
-        }
-
+        const reinit = () => this.initAllLabels(el);
+        document.addEventListener('DOMContentLoaded', reinit, { once: true });
+        document.addEventListener('shopify:section:load', reinit);
+        document.addEventListener('shopify:section:select', reinit);
+        document.addEventListener('shopify:section:deselect', reinit);
+        document.addEventListener('shopify:block:select', reinit);
+        document.addEventListener('shopify:block:deselect', reinit);
         callback(el);
       },
       initAllLabels(el) {
