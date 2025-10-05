@@ -2450,6 +2450,11 @@
                         use_variant: true,
                         container: 'main-product-price'
                       -%}
+                      {% assign v = product.selected_or_first_available_variant %}
+                      {% if v.compare_at_price and v.compare_at_price > v.price %}
+                        {% assign atd_pct = v.compare_at_price | minus: v.price | times: 100 | divided_by: v.compare_at_price | round %}
+                        <span class="atd-temp-discount" style="margin-left:0.5rem;font-weight:600;">({{ atd_pct }}% OFF)</span>
+                      {% endif %}
                     </div>
                     {% if block.settings.show_tax_and_shipping %}
                       {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
