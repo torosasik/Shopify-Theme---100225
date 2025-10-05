@@ -17,7 +17,7 @@
         "product-labels-and-badges-0": {
           "type": "sale-label",
           "settings": {
-            "show_on_product_card": false,
+            "show_on_product_card": true,
             "show_on_product_page": true,
             "icon": "earth",
             "custom_icon": "",
