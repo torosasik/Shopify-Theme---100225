@@ -403,12 +403,7 @@ x-slide-index="{{ index | minus: 1 }}">
           <div {% unless product_complementary %} class="mt-2.5"{% endunless %}>
             <div class="loox-rating" data-id="{{ card_product.id }}" data-rating="{{ card_product.metafields.loox.avg_rating }}" data-raters="{{ card_product.metafields.loox.num_reviews }}"></div>
             {% render 'otsb-price', product: card_product, product_complementary: product_complementary %}
-            {%- assign ca = card_product.compare_at_price_max -%}
-            {%- assign p = card_product.price -%}
-            {%- if ca and ca > p -%}
-              {%- assign atd_pct = ca | minus: p | times: 100 | divided_by: ca | round -%}
-              <span class="atd-temp-discount-card" style="margin-left:0.5rem;font-weight:600;">({{ atd_pct }}% OFF)</span>
-            {%- endif -%}
+            <span class="atd-ping">PING</span>
           </div>
         </div>
       </div>
