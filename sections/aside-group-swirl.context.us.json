@@ -12,5 +12,16 @@
   "context": {
     "market": "us"
   },
-  "sections": {}
+  "sections": {
+    "product-labels-and-badges": {
+      "settings": {},
+      "blocks": {
+        "product-labels-and-badges-0": {
+          "settings": {
+            "icon": "none"
+          }
+        }
+      }
+    }
+  }
 }
