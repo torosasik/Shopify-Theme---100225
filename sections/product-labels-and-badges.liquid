@@ -1,7 +1,14 @@
 {%- liquid
   assign text_base_size =  settings.text_base_size | times: 0.01
+  assign has_active_block = false
+  for block in section.blocks
+    if block.settings.show_on_product_card or block.settings.show_on_product_page
+      assign has_active_block = true
+      break
+    endif
+  endfor
 -%}
-{%- if section.settings.enable or request.design_mode -%}
+{%- if section.settings.enable or has_active_block -%}
   {%- style -%}
     {%- for block in section.blocks -%}
       {%- unless block.type == 'image-label' -%}
@@ -170,17 +177,6 @@
       </div>
     </div>
   {%- endif -%}
-{%- else -%}
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.store('xBadges', {
-      load() {
-        return;
-      }
-    })
-  });
-</script>
-{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.product-labels-and-badges.name",
