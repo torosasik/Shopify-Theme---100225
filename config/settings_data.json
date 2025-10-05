@@ -134,7 +134,7 @@
     "show_in_cart_items": "none",
     "enable_scroll_top_desktop": true,
     "show_background_scroll_top": false,
-    "currency_code_enable": false,
+    "currency_code_enable": true,
     "selected_preset": "swirl",
     "checkout_sidebar_background_color": "#F6F6F0",
     "checkout_accent_color": "#17532d",
