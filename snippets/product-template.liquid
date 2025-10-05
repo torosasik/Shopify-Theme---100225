@@ -2450,7 +2450,12 @@
                         use_variant: true,
                         container: 'main-product-price'
                       -%}
-                      <span class="atd-ping">PING</span>
+                      {%- assign v = product.selected_or_first_available_variant -%}
+                      {%- if v.compare_at_price > v.price -%}
+                        {%- assign _diff = v.compare_at_price | minus: v.price -%}
+                        {%- assign _pct = _diff | times: 100.0 | divided_by: v.compare_at_price | round -%}
+                        <span class="atd-temp-discount" style="margin-left:6px;font-weight:600;">({{ _pct }}% OFF)</span>
+                      {%- endif -%}
                     </div>
                     {% if block.settings.show_tax_and_shipping %}
                       {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}

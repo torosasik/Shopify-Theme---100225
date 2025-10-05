@@ -72,7 +72,13 @@
           </a>
         </div>
         {% render 'otsb-price', product: card_product %}
-        <span class="atd-ping">PING</span>
+        {%- assign _cmp = card_product.compare_at_price_max -%}
+        {%- assign _p = card_product.price -%}
+        {%- if _cmp > _p and _cmp > 0 -%}
+          {%- assign _diff = _cmp | minus: _p -%}
+          {%- assign _pct = _diff | times: 100.0 | divided_by: _cmp | round -%}
+          <span class="atd-temp-discount-card" style="margin-left:6px;font-weight:600;">({{ _pct }}% OFF)</span>
+        {%- endif -%}
       </div>
     </div>
   </div>
