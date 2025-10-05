@@ -3584,25 +3584,23 @@
                       "make_content_center": {{ show_content_center }}
                     }
                   {%- endcapture %}
-                  <!--
-                    <div class="w-full" id="x-badges-{{ section.id }}" {{ block.shopify_attributes }}>
-                      <div
-                        class="x-badges-container text-sm x-badges-product-detail empty:h-0 empty:min-h-0 empty:mb-0 min-h-[45px] flex items-center flex-wrap gap-x-1 gap-y-2 md:gap-y-4 mb-5{% if show_content_center %} justify-center{% endif %}"
-                        x-init='
-                          () => {
-                            if ($store.xBadges) {
-                              const container = document.querySelector("#x-badges-{{ section.id }}");
-                              $store.xBadges.load($el, (el) => {
-                                el.removeAttribute("x-init");
-                                container.innerHTML = el.outerHTML;
-                              }, container)
-                            }
+                  <div class="w-full" id="x-badges-{{ section.id }}" {{ block.shopify_attributes }}>
+                    <div
+                      class="x-badges-container text-sm x-badges-product-detail empty:h-0 empty:min-h-0 empty:mb-0 min-h-[45px] flex items-center flex-wrap gap-x-1 gap-y-2 md:gap-y-4 mb-5{% if show_content_center %} justify-center{% endif %}"
+                      x-init='
+                        () => {
+                          if ($store.xBadges) {
+                            const container = document.querySelector("#x-badges-{{ section.id }}");
+                            $store.xBadges.load($el, (el) => {
+                              el.removeAttribute("x-init");
+                              container.innerHTML = el.outerHTML;
+                            }, container)
                           }
-                        '
-                        x-labels-data="{{ dataForLabel | escape }}"
-                      ></div>
-                    </div>
-                  -->
+                        }
+                      '
+                      x-labels-data="{{ dataForLabel | escape }}"
+                    ></div>
+                  </div>
                 {%- when 'estimate_delivery' -%}
                   {% liquid
                     assign disable_cart_edt = false
